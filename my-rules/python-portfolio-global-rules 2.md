@@ -73,14 +73,6 @@
 
 2. **Standard Library Structure**
    - Create reusable utility modules for common operations
-   - Standardize on specific libraries for each purpose:
-     ```
-     pandas: Data manipulation
-     numpy: Numerical operations
-     scipy: Statistical operations
-     matplotlib/seaborn: Static visualizations
-     plotly: Interactive visualizations
-     ```
 
 3. **Error Handling**
    - Use explicit error handling with descriptive messages
@@ -119,9 +111,9 @@
 ## Environment Management
 
 1. **Virtual Environment Requirements**
-   - ALWAYS create and use a virtual environment for each project
-   - ALWAYS activate the virtual environment before any package operations
-   - ALWAYS activate the virtual environment before running any project code
+   - Create and use a virtual environment for each project
+   - Activate the virtual environment before any package installation
+   - Activate the virtual environment before running scripts
    - Document virtual environment setup in README.md
 
 2. **Virtual Environment Setup**
@@ -132,19 +124,18 @@
    # Activate virtual environment (Windows)
    venv\Scripts\activate
    
-   
    # Install dependencies
    pip install -r requirements.txt
 
-
 3. **Dependency Management**
    - Use `requirements.txt` to manage project dependencies
-   -Use poetry and uv as an alternative to pip for dependency management
+   - Create a `pyproject.toml` file to manage dependencies with poetry
+   - Create batch script to automate the process of creating and activating virtual environment, installing dependencies, and running scripts. 
+   - Batch script should include a selection menu for running scripts, selecting virtual environment, and installing dependencies, update requirements.txt and pyproject.toml when necessary.
+   - Use poetry and uv as an alternative to pip for dependency management
    - Store exact dependencies in requirements.txt with pinned versions
-   - Create requirements-dev.txt for development dependencies
-   - Document dependency installation process
    - Update requirements.txt when adding new dependencies
-   -When new package is added to requirements.txt, also update pyproject.toml for poetry and uv
+   - When new package is added to requirements.txt, also update pyproject.toml for poetry and uv
    - Dependencies version should be consistent across requirements.txt and pyproject.toml
    - Use conda to create virtual environment if dependencies require a higher python version than the default Python version
    - Check the required python version before installing dependencies
@@ -163,18 +154,6 @@
    - Request implementation plan before full code generation
    - Review and approve plan before requesting implementation
    - Format: Brief bullet points of approach, key functions, and interfaces
-
-3. **Code Review Guidance**
-   - Specify key review points when requesting code review
-   - Focus on specific concerns rather than general reviews
-   - Example: "Review the risk calculation for numerical stability issues"
-
-
-## Docker and Containerization
-
-- Dockerfile, .dockerignore, and docker-compose.yml files are provided for containerization.
-- Configure environment through .env files to manage environment variables.
-- Don't store secrets in images
 
 ## GitHub Repository Management
 
@@ -209,14 +188,3 @@ Keep commits focused and atomic
 Reference issues in commit messages (#issue-number)
 
 
-## Continuous Integration/Continuous Deployment (CI/CD)Version Control Tags
-
-1. **Tagging**
-
-- Tag all releases with semantic versioning (v1.0.0)
-- Include release notes with each tag
-- Create GitHub releases for major versions
-
-## GitHub Container Registry (GHCR.io) Workflows
-- Create a Personal Access Token (PAT) with appropriate scopes
-- Build Dockerfile locally and push to GHCR.io
