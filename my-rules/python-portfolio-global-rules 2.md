@@ -115,9 +115,28 @@
    - Install dependencies in virtual environment
    - Activate the virtual environment before running scripts
    - Spin up server and preview in virtual environment
-   
+
+## Code Review Standards
+[tool.ruff]
+select = [
+    "F401",  # Unused imports
+    "F841",  # Local variable assigned but never used
+    "F821",  # Unused local variable
+    "F811",  # Duplicate argument
+    "F812",  # Duplicate argument name
+    "F822",  # Unnecessary lambda
+    "F823",  # Local variable referenced before assignment
+    "F831",  # Duplicate key in dictionary
+    "F841",  # Local variable assigned but never used
+    "W291",  # Trailing whitespace
+    "W292",  # Trailing blank line
+    "W293",  # Blank line contains whitespace
+    "W391",  # Blank line at end of file
+]
+
 2. **Initial Project Setup**
    - uv init --python-version 3.10.11   # Install dependencies
+   - Add ruff as linter to pyproject.toml and requirements.txt
    - uv pip install -r requirements.txt
 
 3. **Dependency Management**
