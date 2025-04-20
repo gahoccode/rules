@@ -111,24 +111,23 @@
 ## Environment Management
 
 1. **Virtual Environment Requirements**
-   - Create and use a virtual environment for each project
-   - Activate the virtual environment before any package installation
+   - Use a virtual environment for each project
+   - Install dependencies in virtual environment
    - Activate the virtual environment before running scripts
-   - Document virtual environment setup in README.md
-
+   - Spin up server and preview in virtual environment
+   
 2. **Initial Project Setup**
    - uv init --python-version 3.10.11   # Install dependencies
    - uv pip install -r requirements.txt
 
 3. **Dependency Management**
    - Use `requirements.txt` to manage project dependencies
-   - Create a `pyproject.toml` file to manage dependencies with uv
    - Create batch script to automate the process of creating and activating virtual environment, installing dependencies, and running scripts. 
    - Batch script should include a selection menu for running scripts, selecting virtual environment, and installing dependencies, update requirements.txt and pyproject.toml when necessary.
    - Use uv for dependency management
-   - Store exact dependencies in requirements.txt with pinned versions
+   - Write requirements.txt with pinned versions
    - Update requirements.txt when adding new dependencies
-   - When new package is added to requirements.txt, also update pyproject.toml for poetry and uv
+   - When new package is added to requirements.txt, also update pyproject.toml for uv
    - Dependencies version should be consistent across requirements.txt and pyproject.toml
    - Check the required python version before installing dependencies
 
@@ -150,8 +149,6 @@
 ## GitHub Repository Management
 
 1. **Repository Structure**
-
-- Initialize with .gitignore optimized for Python projects
 - Include LICENSE file (MIT recommended for open-source projects)
 - Create comprehensive README.md with project description, setup, and usage
 - LICENSE information should follow what the original repository specifies if the project is a fork
