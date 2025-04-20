@@ -132,14 +132,7 @@
    - Check the required python version before installing dependencies
 
 ## CLI Language
-- import rich library for rich text formatting in CLI output
-- Use rich progress bar to show progress of script execution
-- Use rich table to display data in tabular format
-- Use rich console to display error messages and warnings
-- Use rich console to display logs and debug messages
-- Use rich to display colored and stylized text in CLI output
-- Use rich to display interactive prompts in CLI
-- Use rich to display complex data structures in CLI output such as dictionaries or lists or dataframes.
+   - Utilize the Rich library to enhance CLI output with features such as text formatting, progress bars, tables, error messages, logs, colored text, interactive prompts, and complex data structure displays.
 
 ## Best Practices for Tool Efficiency
 
