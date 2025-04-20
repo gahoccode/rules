@@ -133,8 +133,8 @@
    - Check the required python version before installing dependencies
 
 ## CLI Language
-- Use Windows Command Prompt (cmd) or PowerShell as the CLI language for Python projects
-- Prioritize using Command Prompt over PowerShell
+- import rich library for rich text formatting in CLI output
+
 ## Best Practices for Tool Efficiency
 
 1. **Template Utilization**
