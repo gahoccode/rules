@@ -64,6 +64,8 @@
    - Use `UPPER_CASE_WITH_UNDERSCORES` for constants
    - Example: `TRADING_DAYS_PER_YEAR = 252`, `RISK_FREE_RATE = 0.02`
 
+## MCP Servers and tool calling
+   - Use context7 to get libraries'docs
 ## Code Organization
 
 1. **Modular Design**
