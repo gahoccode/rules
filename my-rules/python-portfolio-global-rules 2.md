@@ -117,16 +117,14 @@
    - Spin up server and preview in virtual environment
 
 ## Code Review Standards
-[tool.ruff]
+[tool.ruff.lint]
 select = [
     "F401",  # Unused imports
     "F841",  # Local variable assigned but never used
     "F821",  # Unused local variable
     "F811",  # Duplicate argument
-    "F812",  # Duplicate argument name
     "F822",  # Unnecessary lambda
     "F823",  # Local variable referenced before assignment
-    "F831",  # Duplicate key in dictionary
     "F841",  # Local variable assigned but never used
     "W291",  # Trailing whitespace
     "W292",  # Trailing blank line
@@ -138,6 +136,9 @@ select = [
    - uv init --python-version 3.10.11   # Install dependencies
    - Add ruff as linter to pyproject.toml and requirements.txt
    - uv pip install -r requirements.txt
+   - Add Rich and Ruff to requirements.txt and pyproject.toml and pin down the absolute version
+   - Add from rich import print to all python files
+   - Add [tool.ruff.lint] to pyproject.toml
 
 3. **Dependency Management**
    - Use `requirements.txt` to manage project dependencies
