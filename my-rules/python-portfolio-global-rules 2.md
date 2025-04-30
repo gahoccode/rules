@@ -68,6 +68,14 @@
    - Use context7 to handle documentation lookup
    - Use Sequential Thinking MCP for planning each step
    - Maintain continuity and forward momentum through Sequential Thinking
+   - Use taskmaster-ai for task analysis and management
+
+## Task Analysis
+   - Initiate a project using taskmaster with the requirements
+   - Analyze complexity with taskmaster and generate substasks.
+   - Set status after finish with each task
+   - Create a Changelog with checkboxes to keep track and update on progess
+   - Remove tasks/ in .gitignore for testing and referencing
 ## Code Organization
 
 1. **Modular Design**
@@ -101,7 +109,7 @@
 
 3. **README.md**
    - Document project purpose and setup instructions
-   - Setup instructions should specify python version and installation methods such as pip install, poetry, uv
+   - Setup instructions should specify python version and installation methods such as pip install, uv
    - Document new changes made to the codebase
 
 
@@ -143,10 +151,19 @@ select = [
    - Add Rich and Ruff to requirements.txt and pyproject.toml and pin down the absolute version
    - Add from rich import print to all python files
    - Add [tool.ruff.lint] to pyproject.toml
+   - Dependencies: vnstock==3.2.2, gunicorn, tenacity==9.1.2
+   - 
+   - PYTHON_VERSION=3.10.11
+   - uv venv -p 3.10.11
+   - PORT=5000
+   - HOST=0.0.0.0
+   - Render start command:gunicorn app:app --timeout 120
+   - Add pyproject.toml [project] requires-python = "==3.10.11"
+
 
 3. **Dependency Management**
    - Use `requirements.txt` to manage project dependencies
-   - Create batch script to automate the process of creating and activating virtual environment, installing dependencies, and running scripts. 
+   - Create batch script named Run.bat to automate the process of creating and activating virtual environment, installing dependencies, and running scripts. 
    - Batch script should include a selection menu for running scripts, selecting virtual environment, and installing dependencies, update requirements.txt and pyproject.toml when necessary.
    - Use uv for dependency management
    - Write requirements.txt with pinned versions
