@@ -76,6 +76,11 @@
    - Set status after finish with each task
    - Create a Changelog with checkboxes to keep track and update on progess
    - Remove tasks/ in .gitignore for testing and referencing
+
+## Task Management
+   - Every time changes are made, go back to the change log and update on what's changed. Keep track of task completions with checkboxes. 
+   - Run integration tests when a new feature is added. 
+   - Explain your conditional statements in your code with comments. 
 ## Code Organization
 
 1. **Modular Design**
