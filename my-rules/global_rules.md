@@ -65,7 +65,7 @@
    - Example: `TRADING_DAYS_PER_YEAR = 252`, `RISK_FREE_RATE = 0.02`
 
 ## MCP Servers and tool calling
-   - Use context7 to handle documentation lookup
+   - Use context7 to get the latest documentation for dependencies in requirements.txt and apply it to the codebase
    - Use Sequential Thinking MCP for planning each step
    - Maintain continuity and forward momentum through Sequential Thinking
    - Use taskmaster-ai for task analysis and management
