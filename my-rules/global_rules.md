@@ -26,6 +26,7 @@
    ```
 
 4. **Comprehensive Implementation and Verification**
+   - When asked to modify code snippets, always return full code snippets and explain the changes made separately (additions, deletions, and modifications)
    - Execute file operations and related processes in optimized complete sequences
    - Continuously verify against quality standards throughout implementation
    - Address issues promptly with integrated solutions
