@@ -87,6 +87,7 @@ Riskfolio-lib aliases:
    - rm: risk measure ("MV", "MAD", "MSV", "FL", "CVaR", "EVaR", "WR", "ADD", "CDaR", "EDaR", "MDD")
    - obj: objective function ("MinRisk", "MaxRet", "Utility", "Sharpe", "ERC", "RBURG")
    - model: specifies the portfolio optimization model ("Classic", "BL", "FM", "FFM", "RRP", "RBURG", "WC", "OWA", "HRP", "HERC", "NCO")
+Abbreviations:
    - Classic: Traditional Markowitz mean-risk portfolio optimization
    - BL: Black-Litterman model combining market equilibrium with investor views
    - FM: Factor Model for factor-based portfolio optimization
