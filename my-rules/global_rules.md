@@ -73,6 +73,33 @@
    - Use `UPPER_CASE_WITH_UNDERSCORES` for constants
    - Example: `TRADING_DAYS_PER_YEAR = 252`, `RISK_FREE_RATE = 0.02`
 
+4. **Alias**
+PyPortfolioOpt aliases:
+   - expected_returns = mu (Expected returns vector)
+   - cov_matrix = S (Covariance matrix)
+Riskfolio-lib aliases:
+   - {portfolio}_weights = w (Portfolio weights)
+   - Example: `max_sharpe_portfolio_weights = w_max_sharpe`
+   - rf: Risk-free rate
+   - l: Risk aversion factor (lambda)
+   - b: Risk budgeting constraint vector  
+   - port = rp.Portfolio() # Short Aliases for Instantiated Objects
+   - rm: risk measure ("MV", "MAD", "MSV", "FL", "CVaR", "EVaR", "WR", "ADD", "CDaR", "EDaR", "MDD")
+   - obj: objective function ("MinRisk", "MaxRet", "Utility", "Sharpe", "ERC", "RBURG")
+   - model: specifies the portfolio optimization model ("Classic", "BL", "FM", "FFM", "RRP", "RBURG", "WC", "OWA", "HRP", "HERC", "NCO")
+   - Classic: Traditional Markowitz mean-risk portfolio optimization
+   - BL: Black-Litterman model combining market equilibrium with investor views
+   - FM: Factor Model for factor-based portfolio optimization
+   - FFM: Factor Model (alternative abbreviation)
+   - RP: Risk Parity (Equal Risk Contribution) portfolio
+   - RRP: Relaxed Risk Parity portfolio with flexible constraints
+   - RBURG: Risk Budgeting portfolio with custom risk allocation
+   - WC: Worst-Case optimization for uncertainty in parameters
+   - OWA: Ordered Weighted Averaging for advanced portfolio optimization
+   - HRP: Hierarchical Risk Parity using clustering for diversification
+   - HERC: Hierarchical Equal Risk Contribution combining clustering with risk parity
+   - NCO: Nested Clustered Optimization performing optimization within clusters
+   
 ## MCP Servers and tool calling
    - Use context7 to get the latest documentation for dependencies in requirements.txt and apply it to the codebase
    - Use Sequential Thinking MCP for planning each step
