@@ -107,3 +107,91 @@ PYTHON-SPECIFIC RULES
 
 7. CLI LANGUAGE
    - Utilize the Rich library to enhance CLI output with features such as text formatting, progress bars, tables, error messages, logs, colored text, interactive prompts, and complex data structure displays
+
+8. DEPLOYMENT
+-------------
+
+> **Port Reference:**
+> - **Flask default port:** 5000
+> - **Streamlit default port:** 8501
+
+### 8.1 Deploying on Render
+- Ensure your project has a `requirements.txt` and (if needed) a `pyproject.toml` specifying Python version.
+- Set the following environment variables on Render:
+  - `PYTHON_VERSION` (e.g., 3.10.11)
+  - `PORT` (e.g., 5000 for Flask, 8501 for Streamlit)
+  - `HOST` (e.g., 0.0.0.0)
+- Use the following Render start command for Flask:
+  ```sh
+  gunicorn app:app --timeout 120
+  ```
+- For Streamlit, set the start command to:
+  ```sh
+  streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+  ```
+- Pin all dependency versions in `requirements.txt`.
+- If using private dependencies or GitHub links in `requirements.txt`, ensure proper authentication or SSH keys are configured in Render.
+
+### 8.2 Deploying with Docker
+- Use the following Dockerfile as a template. It installs `git` to support `requirements.txt` entries from GitHub:
+
+  ```Dockerfile
+  FROM python:3.10-slim
+
+  # Install git (required for requirements.txt with GitHub links)
+  RUN apt-get update && apt-get install -y git \
+      && rm -rf /var/lib/apt/lists/*
+
+  # Set work directory
+  WORKDIR /app
+
+  # Copy requirements and install dependencies
+  COPY requirements.txt ./
+  RUN pip install --upgrade pip && pip install -r requirements.txt
+
+  # Copy the rest of the code
+  COPY . .
+
+  # Expose the port (use 5000 for Flask, 8501 for Streamlit)
+  EXPOSE 5000 8501
+
+  # Start command for Flask (adjust as needed)
+  # CMD ["gunicorn", "app:app", "--timeout", "120", "--bind", "0.0.0.0:5000"]
+  # Start command for Streamlit (uncomment if using Streamlit)
+  # CMD ["streamlit", "run", "app.py", "--server.port", "8501", "--server.address", "0.0.0.0"]
+  ```
+
+- **Note:** If you use GitHub links in `requirements.txt`, `git` must be installed in the Docker image, as shown above.
+- Build and run your Docker image (choose the correct port for your framework):
+  ```sh
+  # For Flask
+  docker build -t my-python-app .
+  docker run -p 5000:5000 my-python-app
+
+  # For Streamlit
+  docker build -t my-streamlit-app .
+  docker run -p 8501:8501 my-streamlit-app
+  ```
+
+#### Render Deployment with Docker: Setting the Start Command
+
+- **How Render Determines the Start Command:**
+  - By default, Render will use the `CMD` specified in your Dockerfile to start your app.
+  - You can override this by specifying a **Start Command** in the Render dashboard under your service's settings. If set, Render will use this command instead of the Dockerfile's CMD.
+
+- **Best Practice:**
+  - For most cases, set the correct `CMD` in your Dockerfile for the framework you use (Flask or Streamlit).
+  - If you need to change the command without rebuilding the image, set the Start Command in Render's dashboard.
+
+- **Examples:**
+  - For Flask (in Dockerfile or Render Start Command):
+    ```sh
+    gunicorn app:app --timeout 120 --bind 0.0.0.0:5000
+    ```
+  - For Streamlit (in Dockerfile or Render Start Command):
+    ```sh
+    streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+    ```
+
+- **Tip:**
+  - Ensure the port you EXPOSE in your Dockerfile matches the port you bind in your start command and the PORT environment variable set in Render.
