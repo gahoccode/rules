@@ -195,3 +195,59 @@ PYTHON-SPECIFIC RULES
 
 - **Tip:**
   - Ensure the port you EXPOSE in your Dockerfile matches the port you bind in your start command and the PORT environment variable set in Render.
+
+### 8.3 Deployment Requirements
+
+#### Required Files
+
+1. **Dockerfile** - Must include:
+   - Appropriate Python version (e.g., `FROM python:3.10-slim`).
+   - System dependencies including `git` for GitHub requirements.
+   - Correct port exposure (5000 for Flask, 8501 for Streamlit).
+   - Proper start command for your framework.
+
+2. **start.sh** - Required for Render deployments:
+   ```bash
+   #!/bin/bash
+   set -e
+   PORT=${PORT:-8501}  # Use Render's PORT or default
+   streamlit run app.py --server.port=$PORT --server.address=0.0.0.0
+   ```
+
+3. **render.yaml** - For infrastructure as code:
+   ```yaml
+   services:
+     - type: web
+       buildCommand: pip install -r requirements.txt
+       startCommand: bash start.sh
+       envVars:
+         - key: PYTHON_VERSION
+           value: 3.10.11
+         - key: PORT
+           value: 8501
+   ```
+
+#### Deployment Rules
+
+1. **Port Handling**
+   - Always use a `start.sh` script to handle Render's dynamic port assignment.
+   - Include error handling with `set -e` in bash scripts.
+
+2. **Configuration**
+   - Use `render.yaml` for consistent, repeatable deployments.
+   - Explicitly set Python version in all configuration files.
+   - Pin all dependency versions in `requirements.txt`.
+
+3. **System Dependencies**
+   - Include all necessary system packages in Dockerfile.
+   - For Streamlit: `build-essential`, `git`, `libxml2-dev`, `libxslt1-dev`.
+   - For Flask with SQLAlchemy: include database drivers (e.g., `postgresql-dev`).
+
+4. **Security**
+   - Never hardcode secrets in Dockerfile or source code.
+   - Use Render environment variables for sensitive information.
+   - Clean up package caches with `rm -rf /var/lib/apt/lists/*`.
+
+5. **Testing**
+   - Test Docker deployment locally before pushing to Render.
+   - Verify port binding and environment variable handling.
