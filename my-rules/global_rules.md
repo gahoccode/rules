@@ -37,6 +37,14 @@
    - Confirm at critical decision points
    - Promptly report issues with proposed solutions
 
+## Code Style
+
+1. **PEP8 Compliance**
+   - Follow PEP8 style guidelines for Python code
+   - Use consistent indentation (4 spaces)
+   - Use meaningful variable names
+   - Use consistent naming conventions
+
 ## Naming Conventions
 
 1. **Variables and Functions**
