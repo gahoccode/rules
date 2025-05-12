@@ -25,10 +25,9 @@ description: Guidelines on deploying to Render and Docker
 - Configure PORT environment variable accordingly
 
 ## 4. Add Alternative Deployment Options
-- Create Procfile for Heroku-compatible platforms
 - For Flask: `web: gunicorn app:app`
 - For Streamlit: `web: streamlit run --server.port=$PORT --server.address=0.0.0.0 app.py`
-- Support multi-platform deployment
+
 
 ## 5. Local Testing
 - Build Docker image
