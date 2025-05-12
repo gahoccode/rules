@@ -36,7 +36,10 @@ description: Guidelines on deploying to Render and Docker
 - Validate environment variables (including PYTHON_VERSION=3.10.11)
 - Ensure application is accessible from host
 
-## 6. Configure Version Control
+## 6. Disk cleanup
+- Remove files in local testing to save disk space and prevent ports conflicts with other existing docker container 
+
+## 7. Configure Version Control
 - Commit all configuration files
 - Ensure scripts have executable permissions
 - Set up appropriate .gitignore
