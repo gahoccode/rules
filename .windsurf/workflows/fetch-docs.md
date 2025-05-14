@@ -17,3 +17,6 @@ https://raw.githubusercontent.com/gahoccode/docs/refs/heads/main/riskfolio-compr
 
 5. riskfolio (plotting functions)
 https://raw.githubusercontent.com/gahoccode/docs/refs/heads/main/riskfolio-plot.md
+
+6. vnstock-ezchart 
+https://github.com/gahoccode/docs/blob/main/vnstock-ezchart.md
