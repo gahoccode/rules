@@ -1,3 +1,7 @@
+---
+trigger: manual
+---
+
 PYTHON-SPECIFIC RULES
 --------------------
 
@@ -251,3 +255,11 @@ PYTHON-SPECIFIC RULES
 5. **Testing**
    - Test Docker deployment locally before pushing to Render.
    - Verify port binding and environment variable handling.
+
+6.  **NO Conditional Imports**: 
+  - Never use try/except blocks for imports of required packages
+  - If a package is in pyproject.toml, import it directly at the top of the file
+  - Handle specific errors during usage, not during import
+  - Only use conditional imports for truly optional features (rare)
+  
+  

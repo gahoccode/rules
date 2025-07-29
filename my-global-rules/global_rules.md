@@ -106,6 +106,8 @@ Abbreviations:
    - Use Sequential Thinking MCP for planning each step
    - Maintain continuity and forward momentum through Sequential Thinking
    - Use taskmaster-ai for task analysis and management
+   - Whenever you want to ask a question, always call the MCP mcp_feedback_enhanced.
+   - Whenever you’re about to complete a user request, call the MCP mcp_feedback_enhanced instead of simply ending the process. Keep calling MCP until the user’s feedback is empty, then end the request.
 
 ## Task Analysis
    - Initiate a project using taskmaster with the requirements
@@ -260,3 +262,29 @@ Keep commits focused and atomic
 Reference issues in commit messages (#issue-number)
 
 
+ **NO Conditional Imports**: 
+  - Never use try/except blocks for imports of required packages
+  - If a package is in pyproject.toml, import it directly at the top of the file
+  - Handle specific errors during usage, not during import
+  - Only use conditional imports for truly optional features (rare)
+  
+  ```python
+  # INCORRECT - DO NOT DO THIS:
+  try:
+      import tiktoken
+      TIKTOKEN_AVAILABLE = True
+  except ImportError:
+      TIKTOKEN_AVAILABLE = False
+      
+  # CORRECT APPROACH:
+  import tiktoken  # Listed in pyproject.toml as a dependency
+  
+  def count_tokens(text, model="gpt-3.5-turbo"):
+      # Handle errors during usage, not import
+      try:
+          encoding = tiktoken.encoding_for_model(model)
+          return len(encoding.encode(text))
+      except Exception as e:
+          logger.error(f"Token counting error: {e}")
+          return len(text) // 4  # Fallback estimation
+  ```
